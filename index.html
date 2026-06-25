@@ -11,181 +11,76 @@
     <style>
         body {
             font-family: 'Prompt', sans-serif;
-            /* แก้ไขโทนสีพื้นหลังตามที่กำหนด */
             background: linear-gradient(135deg, #D6EEF0 0%, #E9DEFF 100%);
             min-height: 100vh;
         }
         
-        @keyframes float-up-down {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(10deg); }
-        }
-        @keyframes float-left-right {
-            0%, 100% { transform: translateX(0px) rotate(0deg); }
-            50% { transform: translateX(15px) rotate(-10deg); }
-        }
-        @keyframes pulse-soft {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
-        }
-        @keyframes spin-slow { 100% { transform: rotate(360deg); } }
-
-        @keyframes dash-animation {
-            from { stroke-dashoffset: 0; }
-            to { stroke-dashoffset: -24; }
-        }
-        .animate-dash {
-            animation: dash-animation 1s linear infinite;
-        }
-
-        .anim-float-1 { animation: float-up-down 4s ease-in-out infinite; }
-        .anim-float-2 { animation: float-up-down 5s ease-in-out infinite 1.5s; }
-        .anim-float-3 { animation: float-left-right 6s ease-in-out infinite; }
-        .anim-float-4 { animation: float-left-right 4.5s ease-in-out infinite 2s; }
-        .anim-pulse { animation: pulse-soft 3s ease-in-out infinite; }
-        .anim-spin { animation: spin-slow 8s linear infinite; }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 1);
-            box-shadow: 0 20px 50px -10px rgba(214, 238, 240, 0.5), 
-                        inset 0 2px 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .virtual-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .virtual-card:hover {
-            transform: translateY(-4px);
-        }
-        .virtual-card:active {
-            transform: translateY(2px) scale(0.98);
+        .custom-card {
+            background: #FED8E5;
+            border: 2px solid #E9DEFF;
         }
         
-        ::-webkit-scrollbar {
-            width: 0px;
-        }
+        ::-webkit-scrollbar { width: 0px; }
     </style>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // ปรับ Palette สีตามที่กำหนด D6EEF0 FED8E5 E9DEFF
-                        custom: {
-                            blue: '#D6EEF0',
-                            pink: '#FED8E5',
-                            purple: '#E9DEFF',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="flex flex-col items-center py-6 px-4 text-gray-700 relative overflow-x-hidden">
+<body class="flex flex-col items-center py-6 px-4 text-gray-800">
 
-    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <svg class="absolute top-[5%] left-[10%] w-8 h-8 text-custom-pink anim-float-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-        <svg class="absolute top-[15%] left-[2%] w-6 h-6 text-white/60 anim-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        <svg class="absolute top-[8%] left-[25%] w-4 h-4 text-custom-purple/50 anim-float-3" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>
+    <div id="toast" class="fixed bottom-8 bg-gray-800 text-white px-6 py-3 rounded-full opacity-0 transition-opacity duration-300 z-50">
+        คัดลอกสำเร็จ!
     </div>
 
-    <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800/95 backdrop-blur-sm text-white px-6 py-3 rounded-full shadow-xl transition-all duration-300 opacity-0 translate-y-4 pointer-events-none z-50 flex items-center gap-2 font-medium text-sm">
-        คัดลอกเลขบัญชีแล้ว
-    </div>
-
-    <div class="max-w-[420px] w-full relative z-10 space-y-5 pb-10">
+    <div class="max-w-[420px] w-full space-y-5 pb-10">
         
-        <div class="text-center pt-2 pb-2 relative">
-            <h1 class="text-2xl font-bold tracking-tight text-gray-800 flex items-center justify-center gap-2">
-                NUTANG STORE
-            </h1>
-            <p class="text-sm font-medium text-gray-500 mt-1">Payment & Checkout</p>
+        <div class="text-center">
+            <h1 class="text-2xl font-bold text-gray-800">NUTANG STORE</h1>
+            <p class="text-sm font-medium text-gray-600">Payment & Checkout</p>
         </div>
 
-        <div class="glass-card rounded-[40px] p-3 relative z-10">
+        <div class="custom-card rounded-[40px] p-6 shadow-xl">
             
-            <div class="relative p-2 rounded-[36px] z-10">
-                <svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2" y="2" width="calc(100% - 4px)" height="calc(100% - 4px)" rx="34" fill="none" stroke="#FED8E5" stroke-width="2.5" stroke-dasharray="12 12" stroke-linecap="round" class="animate-dash" />
-                </svg>
-                <div class="rounded-[28px] overflow-hidden relative shadow-sm border-[4px] border-white">
-                    <img src="⭐️⭐️.png" alt="บัญชี NUTANG STORE" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x600/FED8E5/white?text=NUTANG+STORE'">
-                </div>
+            <div class="rounded-[28px] overflow-hidden mb-6">
+                <img src="⭐️⭐️.png" alt="Store Image" class="w-full h-auto" onerror="this.src='https://placehold.co/600x400/D6EEF0/gray?text=NUTANG+STORE'">
             </div>
 
-            <div class="p-4 pt-6 space-y-5">
-                
-                <div class="text-center space-y-3">
-                    <p class="text-[15px] font-medium leading-relaxed text-gray-700">
-                        ชื่อบัญชี <span class="text-red-500 font-bold bg-pink-50 px-2 rounded-lg border border-pink-100">วนิดา ขอมุ่งกลาง</span> เท่านั้น‼️
-                    </p>
+            <div class="space-y-4">
+                <p class="text-center font-bold text-gray-800">ชื่อบัญชี วนิดา ขอมุ่งกลาง เท่านั้น‼️</p>
+
+                <div class="bg-[#D6EEF0] p-4 rounded-2xl cursor-pointer" onclick="copyText('1951902590')">
+                    <p class="text-sm font-bold">KBank</p>
+                    <p class="text-xl font-bold">1951902590</p>
                 </div>
 
-                <div class="space-y-4">
-                    
-                    <div class="virtual-card relative bg-gradient-to-br from-green-500 to-green-600 rounded-[24px] p-5 shadow-lg cursor-pointer border border-green-400" onclick="copyText('1951902590', this, 'kbank')">
-                        <div class="relative z-10 flex flex-col gap-4">
-                            <div class="flex justify-between items-center text-white">
-                                <span class="font-bold">KBank</span>
-                                <button class="kbank-btn bg-white/20 text-white text-[12px] font-bold px-4 py-2 rounded-full">คัดลอก</button>
-                            </div>
-                            <div>
-                                <div class="text-white font-bold text-[22px] tracking-widest">1951902590</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="virtual-card relative bg-gradient-to-br from-orange-400 to-red-500 rounded-[24px] p-5 shadow-lg cursor-pointer border border-orange-300" onclick="copyText('0804477228', this, 'true')">
-                        <div class="relative z-10 flex flex-col gap-4">
-                            <div class="flex justify-between items-center text-white">
-                                <span class="font-bold">TrueMoney</span>
-                                <button class="true-btn bg-white/20 text-white text-[12px] font-bold px-4 py-2 rounded-full">คัดลอก</button>
-                            </div>
-                            <div>
-                                <div class="text-white font-bold text-[22px] tracking-widest">0804477228</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-4 text-[13px] text-gray-700">
-                        <p><strong>Note :</strong> ซื้อขายกับร้าน NuTang</p>
-                        <p class="mt-2 text-red-600 font-bold">สำคัญ‼️</p>
-                        <p>เฉพาะคนโอน Wallet รบกวนบวกเพิ่ม +2 บาทนะคะ (เนื่องจากค่าธรรมเนียมแอปสูงมาก)</p>
-                    </div>
-
-                    <a href="https://www.facebook.com/share/p/1X4GtQGKK2/?mibextid=wwXIfr" target="_blank" class="block text-center py-3 bg-custom-purple rounded-2xl font-bold text-gray-800 hover:opacity-80 transition">
-                        เช็ค ꒰ ᴄʀᴇᴅɪᴛ ꒱ ◌ ּ֯
-                    </a>
-
+                <div class="bg-[#D6EEF0] p-4 rounded-2xl cursor-pointer" onclick="copyText('0804477228')">
+                    <p class="text-sm font-bold">TrueMoney</p>
+                    <p class="text-xl font-bold">0804477228</p>
                 </div>
+
+                <div class="bg-[#E9DEFF] p-4 rounded-2xl cursor-pointer border-2 border-dashed border-[#D6EEF0]" onclick="copyText('ซื้อขายกับร้าน NuTang')">
+                    <p class="text-sm font-bold">Note (จิ้มเพื่อคัดลอก):</p>
+                    <p class="text-md font-medium">ซื้อขายกับร้าน NuTang</p>
+                </div>
+
+                <div class="text-sm text-gray-700 mt-4 space-y-2">
+                    <p class="font-bold text-red-600">สำคัญ‼️</p>
+                    <p>เฉพาะคนโอน Wallet รบกวนบวกเพิ่ม +2 บาทนะคะ</p>
+                </div>
+
+                <a href="https://www.facebook.com/share/p/1X4GtQGKK2/?mibextid=wwXIfr" class="block text-center py-3 bg-[#E9DEFF] rounded-2xl font-bold hover:opacity-80">
+                    เช็ค ꒰ ᴄʀᴇᴅɪᴛ ꒱ ◌ ּ֯
+                </a>
             </div>
         </div>
     </div>
 
     <script>
-        function copyText(text, containerElement, type) {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            
-            showToast();
-        }
-
-        function showToast() {
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
             const toast = document.getElementById('toast');
-            toast.classList.remove('opacity-0', 'translate-y-4');
-            toast.classList.add('opacity-100', 'translate-y-0');
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
             setTimeout(() => {
-                toast.classList.remove('opacity-100', 'translate-y-0');
-                toast.classList.add('opacity-0', 'translate-y-4');
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
             }, 2000);
         }
     </script>
