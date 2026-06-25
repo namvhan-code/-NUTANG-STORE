@@ -11,41 +11,18 @@
     <style>
         body {
             font-family: 'Prompt', sans-serif;
-            background: #D1B9FF; /* พื้นหลังนอก */
+            background: #D1B9FF;
             min-height: 100vh;
         }
         
-        @keyframes float-up-down {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(10deg); }
-        }
-        @keyframes float-left-right {
-            0%, 100% { transform: translateX(0px) rotate(0deg); }
-            50% { transform: translateX(15px) rotate(-10deg); }
-        }
-        @keyframes pulse-soft {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
-        }
-        @keyframes spin-slow { 100% { transform: rotate(360deg); } }
-
         @keyframes dash-animation {
             from { stroke-dashoffset: 0; }
             to { stroke-dashoffset: -24; }
         }
-        .animate-dash {
-            animation: dash-animation 1s linear infinite;
-        }
-
-        .anim-float-1 { animation: float-up-down 4s ease-in-out infinite; }
-        .anim-float-2 { animation: float-up-down 5s ease-in-out infinite 1.5s; }
-        .anim-float-3 { animation: float-left-right 6s ease-in-out infinite; }
-        .anim-float-4 { animation: float-left-right 4.5s ease-in-out infinite 2s; }
-        .anim-pulse { animation: pulse-soft 3s ease-in-out infinite; }
-        .anim-spin { animation: spin-slow 8s linear infinite; }
+        .animate-dash { animation: dash-animation 1s linear infinite; }
 
         .glass-card {
-            background: #ECE5FF; /* พื้นหลังใน */
+            background: #ECE5FF;
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 1);
             box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.1);
@@ -60,19 +37,14 @@
 </head>
 <body class="flex flex-col items-center py-6 px-4 text-gray-800 relative overflow-x-hidden">
 
-    <!-- Background Decorative SVGs (คงเดิม) -->
-    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <svg class="absolute top-[5%] left-[10%] w-8 h-8 text-pink-300 anim-float-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-        <svg class="absolute top-[50%] right-[2%] w-6 h-6 text-pink-300 anim-float-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-    </div>
-
+    <!-- Toast -->
     <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800/90 text-white px-6 py-3 rounded-full shadow-xl transition-all duration-300 opacity-0 translate-y-4 pointer-events-none z-50 flex items-center gap-2 font-medium text-sm">
         คัดลอกเลขบัญชีแล้ว
     </div>
 
     <div class="max-w-[420px] w-full relative z-10 space-y-5 pb-10">
         <div class="text-center pt-2 pb-2 relative">
-            <h1 class="text-2xl font-bold tracking-tight text-gray-800 flex items-center justify-center gap-2">NUTANG STORE</h1>
+            <h1 class="text-2xl font-bold tracking-tight text-gray-800">NUTANG STORE</h1>
             <p class="text-sm font-medium text-gray-500 mt-1">Payment & Checkout</p>
         </div>
 
@@ -88,9 +60,7 @@
 
             <div class="p-4 pt-6 space-y-5">
                 <div class="text-center space-y-3">
-                    <p class="text-[15px] font-medium leading-relaxed">
-                        ชื่อบัญชี <span class="font-bold">วนิดา ขอมุ่งกลาง</span> เท่านั้น‼️
-                    </p>
+                    <p class="text-[15px] font-medium">ชื่อบัญชี <span class="font-bold">วนิดา ขอมุ่งกลาง</span> เท่านั้น‼️</p>
                     
                     <button onclick="copyText('Note : ซื้อขายกับร้าน NuTang', this)" class="w-full text-[12px] bg-[#FFFFFF] py-2 rounded-xl border border-gray-200 transition">
                         คัดลอก Note : ซื้อขายกับร้าน NuTang
@@ -102,37 +72,29 @@
                 </div>
 
                 <div class="space-y-4">
-                    <!-- KBank: D6EDF0 -->
                     <div class="virtual-card relative bg-[#D6EDF0] rounded-[24px] p-5 shadow-lg cursor-pointer" onclick="copyText('195-190-2590', this)">
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-sm">KBank</span>
-                            <span class="bg-black/10 text-[12px] font-bold px-4 py-1.5 rounded-full">คัดลอก</span>
-                        </div>
+                        <div class="flex justify-between items-center"><span class="font-bold text-sm">KBank</span><span class="bg-black/10 text-[12px] font-bold px-4 py-1.5 rounded-full">คัดลอก</span></div>
                         <div class="mt-2 font-bold text-[22px] tracking-widest">195-190-2590</div>
                     </div>
 
-                    <!-- Wallet: FEDEE9 -->
                     <div class="virtual-card relative bg-[#FEDEE9] rounded-[24px] p-5 shadow-lg cursor-pointer" onclick="copyText('080-447-7228', this)">
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-sm">TrueMoney</span>
-                            <span class="bg-black/10 text-[12px] font-bold px-4 py-1.5 rounded-full">คัดลอก</span>
-                        </div>
+                        <div class="flex justify-between items-center"><span class="font-bold text-sm">TrueMoney</span><span class="bg-black/10 text-[12px] font-bold px-4 py-1.5 rounded-full">คัดลอก</span></div>
                         <div class="mt-2 font-bold text-[22px] tracking-widest">080-447-7228</div>
                     </div>
 
-                    <!-- กล่องเตือน +20 บาท -->
-                    <div class="bg-white rounded-[20px] p-3.5 border-2 border-dashed border-gray-200 text-[11.5px] text-gray-700">
-                        <span class="font-bold text-pink-500">เฉพาะคนโอน Wallet</span> รบกวนบวกเพิ่ม <span class="bg-gray-100 px-1.5 py-0.5 rounded-md font-bold">+20 บาท</span> นะคะ
+                    <!-- กล่องเตือน +20 บาท พร้อมป้ายสำคัญแบบใน image.png -->
+                    <div class="bg-white rounded-[20px] p-4 border-2 border-dashed border-gray-300">
+                        <div class="flex items-center gap-1.5 mb-2 text-red-500 font-bold text-[14px]">
+                            <span>⚠️</span> <span>สำคัญ!</span>
+                        </div>
+                        <p class="text-[12px] text-gray-700 leading-relaxed">
+                            เฉพาะคนโอน Wallet รบกวนบวกเพิ่ม <span class="bg-gray-100 px-1.5 py-0.5 rounded-md font-bold">+2 บาท</span> นะคะ
+                        </p>
                     </div>
 
-                    <!-- กล่องเตือนโอนผิด/สลิป -->
                     <div class="bg-white border border-gray-200 rounded-2xl p-3 text-[13px] text-center font-medium">
                         โอนผิด โอนใหม่ ไม่โอนคืนนะคะ!<br>
                         รบกวนเช็คชื่อและเลขบัญชีให้ดีก่อนโอนน้า
-                    </div>
-
-                    <div class="bg-white border border-gray-200 rounded-2xl p-3 text-[13px] text-center font-medium">
-                        โอนแล้วรบกวน <span class="text-pink-500 font-bold">แปะสลิปทุกครั้ง</span> ด้วยน้า
                     </div>
                 </div>
             </div>
