@@ -4,71 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NUTANG STORE Payment</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        body {
-            font-family: 'Prompt', sans-serif;
-            background: linear-gradient(135deg, #D6EEF0 0%, #E9DEFF 100%);
-            min-height: 100vh;
-        }
-        
-        .custom-card {
-            background: #FED8E5;
-            border: 2px solid #E9DEFF;
-        }
-        
+        body { font-family: 'Prompt', sans-serif; background: linear-gradient(135deg, #D6EEF0 0%, #E9DEFF 100%); min-height: 100vh; }
+        .glass-card { background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .btn-hover:hover { transform: scale(1.02); transition: 0.3s; }
         ::-webkit-scrollbar { width: 0px; }
     </style>
 </head>
-<body class="flex flex-col items-center py-6 px-4 text-gray-800">
+<body class="flex flex-col items-center py-10 px-4">
 
-    <div id="toast" class="fixed bottom-8 bg-gray-800 text-white px-6 py-3 rounded-full opacity-0 transition-opacity duration-300 z-50">
-        คัดลอกสำเร็จ!
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-5 bg-[#FED8E5] border border-[#E9DEFF] text-gray-700 px-6 py-3 rounded-2xl opacity-0 transition-opacity duration-300 z-50 shadow-lg font-bold">
+        คัดลอกเรียบร้อยแล้วค่า ✨
     </div>
 
-    <div class="max-w-[420px] w-full space-y-5 pb-10">
-        
-        <div class="text-center">
-            <h1 class="text-2xl font-bold text-gray-800">NUTANG STORE</h1>
-            <p class="text-sm font-medium text-gray-600">Payment & Checkout</p>
+    <div class="max-w-[400px] w-full">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-700 tracking-tight">NUTANG STORE</h1>
+            <p class="text-sm text-gray-500 font-medium">Payment & Checkout</p>
         </div>
 
-        <div class="custom-card rounded-[40px] p-6 shadow-xl">
-            
-            <div class="rounded-[28px] overflow-hidden mb-6">
-                <img src="⭐️⭐️.png" alt="Store Image" class="w-full h-auto" onerror="this.src='https://placehold.co/600x400/D6EEF0/gray?text=NUTANG+STORE'">
+        <!-- Main Card -->
+        <div class="glass-card rounded-[35px] p-6 shadow-2xl">
+            <!-- Image -->
+            <div class="rounded-[25px] overflow-hidden mb-6 shadow-lg">
+                <img src="⭐️⭐️.png" alt="Store Image" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x400/D6EEF0/gray?text=NUTANG+STORE'">
             </div>
 
-            <div class="space-y-4">
-                <p class="text-center font-bold text-gray-800">ชื่อบัญชี วนิดา ขอมุ่งกลาง เท่านั้น‼️</p>
-
-                <div class="bg-[#D6EEF0] p-4 rounded-2xl cursor-pointer" onclick="copyText('1951902590')">
-                    <p class="text-sm font-bold">KBank</p>
-                    <p class="text-xl font-bold">1951902590</p>
-                </div>
-
-                <div class="bg-[#D6EEF0] p-4 rounded-2xl cursor-pointer" onclick="copyText('0804477228')">
-                    <p class="text-sm font-bold">TrueMoney</p>
-                    <p class="text-xl font-bold">0804477228</p>
-                </div>
-
-                <div class="bg-[#E9DEFF] p-4 rounded-2xl cursor-pointer border-2 border-dashed border-[#D6EEF0]" onclick="copyText('ซื้อขายกับร้าน NuTang')">
-                    <p class="text-sm font-bold">Note (จิ้มเพื่อคัดลอก):</p>
-                    <p class="text-md font-medium">ซื้อขายกับร้าน NuTang</p>
-                </div>
-
-                <div class="text-sm text-gray-700 mt-4 space-y-2">
-                    <p class="font-bold text-red-600">สำคัญ‼️</p>
-                    <p>เฉพาะคนโอน Wallet รบกวนบวกเพิ่ม +2 บาทนะคะ</p>
-                </div>
-
-                <a href="https://www.facebook.com/share/p/1X4GtQGKK2/?mibextid=wwXIfr" class="block text-center py-3 bg-[#E9DEFF] rounded-2xl font-bold hover:opacity-80">
-                    เช็ค ꒰ ᴄʀᴇᴅɪᴛ ꒱ ◌ ּ֯
-                </a>
+            <!-- Account Name -->
+            <div class="text-center mb-6 bg-[#FED8E5]/50 py-3 rounded-2xl border border-[#FED8E5]">
+                <p class="text-gray-700 font-bold">ชื่อบัญชี: วนิดา ขอมุ่งกลาง</p>
             </div>
+
+            <!-- Payment Methods -->
+            <div class="space-y-3">
+                <div class="glass-card p-4 rounded-2xl cursor-pointer btn-hover border-l-4 border-l-[#D6EEF0]" onclick="copyText('1951902590')">
+                    <p class="text-xs font-bold text-gray-500">KBank</p>
+                    <p class="text-lg font-bold text-gray-800">1951902590</p>
+                </div>
+
+                <div class="glass-card p-4 rounded-2xl cursor-pointer btn-hover border-l-4 border-l-[#FED8E5]" onclick="copyText('0804477228')">
+                    <p class="text-xs font-bold text-gray-500">TrueMoney</p>
+                    <p class="text-lg font-bold text-gray-800">0804477228</p>
+                </div>
+
+                <div class="glass-card p-4 rounded-2xl cursor-pointer btn-hover border-l-4 border-l-[#E9DEFF]" onclick="copyText('ซื้อขายกับร้าน NuTang')">
+                    <p class="text-xs font-bold text-gray-500">Note (จิ้มคัดลอกโน๊ตสลิป)</p>
+                    <p class="text-sm font-medium text-gray-700 italic">"ซื้อขายกับร้าน NuTang"</p>
+                </div>
+            </div>
+
+            <!-- Warning Section -->
+            <div class="mt-6 p-4 bg-[#FED8E5]/30 rounded-2xl text-xs text-gray-600 leading-relaxed border border-[#FED8E5]">
+                <p class="font-bold text-red-500 mb-1">⚠️ สำคัญ!</p>
+                <p>เฉพาะคนโอน Wallet รบกวนบวกเพิ่ม +2 บาทนะคะ</p>
+                <p class="mt-1 opacity-80">เช็คชื่อและเลขบัญชีให้ดีก่อนโอนน้า ไม่โอนคืนทุกกรณีค่ะ!</p>
+            </div>
+
+            <!-- Credit Button -->
+            <a href="https://www.facebook.com/share/p/1X4GtQGKK2/?mibextid=wwXIfr" 
+               class="block mt-6 text-center py-4 bg-[#E9DEFF] rounded-2xl font-bold text-gray-700 hover:bg-[#D6EEF0] transition shadow-md">
+                เช็ค ꒰ ᴄʀᴇᴅɪᴛ ꒱ ◌ ּ֯
+            </a>
         </div>
     </div>
 
